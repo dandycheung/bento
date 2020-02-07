@@ -29,6 +29,7 @@ class ListViewComponentController(val listView: ListView) :
     override val span: Int get() = components.span
     override val size: Int get() = components.size
 
+
     private val components = ComponentGroup()
     private var adapter: Adapter = Adapter()
     private val componentVisibilityListener =
@@ -45,6 +46,18 @@ class ListViewComponentController(val listView: ListView) :
         // during testing.
         listView.setTag(R.id.bento_list_component_controller, this)
     }
+
+    /**
+     * The scrolling capacity of a [ListView] depends on the ListView itself. To make a
+     * ListView non scrollable, you must subclass the ListView itself.
+     */
+    @Suppress("UNUSED_PARAMETER")
+    override var isScrollable: Boolean
+        get() = listView.canScrollHorizontally(-1)
+                || listView.canScrollHorizontally(1)
+                || listView.canScrollVertically(-1)
+                || listView.canScrollVertically(1)
+        set(value) = Unit
 
     override fun get(index: Int) = components[index]
 

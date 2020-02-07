@@ -1,4 +1,7 @@
 # Bento Releases
+## Unreleased version
+* New: Add an `isScrollable` boolean flag to ComponentController
+
 ## Version 15.7.0
 _2020-02-05_
 * New: Add a registerItemVisibilityListener to Component, to avoid needing to override components simply for that. (Comes bundled with an unregister method)
